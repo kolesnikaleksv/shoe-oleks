@@ -31,7 +31,7 @@ export default async function DashboardLayout({
   if (!user || user.email !== 'kolesnikaleksv@gmail.com') {
     return redirect('/');
   }
-  console.log(user, 'user');
+
   return (
     <div className="flex flex-col w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <header className="sticky top-0 flex items-center justify-between gap-4 h-16 border-b bg-white">

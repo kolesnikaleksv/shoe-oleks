@@ -1,8 +1,13 @@
+'use client';
+
+import { UploadDropzone } from '@/app/lib/uploadthing';
+
 import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
@@ -19,7 +24,6 @@ import { Switch } from '@/components/ui/switch';
 import { Textarea } from '@/components/ui/textarea';
 import { ChevronLeft } from 'lucide-react';
 import Link from 'next/link';
-import React from 'react';
 
 export default function ProdutCreateRoute() {
   return (
@@ -62,21 +66,36 @@ export default function ProdutCreateRoute() {
                 <Label>Featured Product</Label>
                 <Switch />
               </div>
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-3 w-full">
                 <Label>Status</Label>
                 <Select>
-                  <SelectTrigger>
+                  <SelectTrigger className="w-full">
                     <SelectValue placeholder="Select status" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="w-full">
                     <SelectItem value="draft">Draft</SelectItem>
                     <SelectItem value="published">Published</SelectItem>
                     <SelectItem value="archived">Archived</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
+              <div className="flex flex-col gap-3 ">
+                <Label>Images</Label>
+                <UploadDropzone
+                  endpoint={'imageUploader'}
+                  onClientUploadComplete={() => {
+                    alert('Finished uploading');
+                  }}
+                  onUploadError={() => {
+                    alert('Something went wrong');
+                  }}
+                />
+              </div>
             </div>
           </CardContent>
+          <CardFooter>
+            <Button>Create Product</Button>
+          </CardFooter>
         </Card>
       </form>
     </div>
