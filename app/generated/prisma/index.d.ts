@@ -2027,6 +2027,7 @@ export namespace Prisma {
     price: number | null
     createdAt: Date | null
     category: $Enums.Category | null
+    isFeatured: boolean | null
   }
 
   export type ProductMaxAggregateOutputType = {
@@ -2037,6 +2038,7 @@ export namespace Prisma {
     price: number | null
     createdAt: Date | null
     category: $Enums.Category | null
+    isFeatured: boolean | null
   }
 
   export type ProductCountAggregateOutputType = {
@@ -2048,6 +2050,7 @@ export namespace Prisma {
     images: number
     createdAt: number
     category: number
+    isFeatured: number
     _all: number
   }
 
@@ -2068,6 +2071,7 @@ export namespace Prisma {
     price?: true
     createdAt?: true
     category?: true
+    isFeatured?: true
   }
 
   export type ProductMaxAggregateInputType = {
@@ -2078,6 +2082,7 @@ export namespace Prisma {
     price?: true
     createdAt?: true
     category?: true
+    isFeatured?: true
   }
 
   export type ProductCountAggregateInputType = {
@@ -2089,6 +2094,7 @@ export namespace Prisma {
     images?: true
     createdAt?: true
     category?: true
+    isFeatured?: true
     _all?: true
   }
 
@@ -2187,6 +2193,7 @@ export namespace Prisma {
     images: string[]
     createdAt: Date
     category: $Enums.Category
+    isFeatured: boolean
     _count: ProductCountAggregateOutputType | null
     _avg: ProductAvgAggregateOutputType | null
     _sum: ProductSumAggregateOutputType | null
@@ -2217,6 +2224,7 @@ export namespace Prisma {
     images?: boolean
     createdAt?: boolean
     category?: boolean
+    isFeatured?: boolean
   }, ExtArgs["result"]["product"]>
 
   export type ProductSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2228,6 +2236,7 @@ export namespace Prisma {
     images?: boolean
     createdAt?: boolean
     category?: boolean
+    isFeatured?: boolean
   }, ExtArgs["result"]["product"]>
 
   export type ProductSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2239,6 +2248,7 @@ export namespace Prisma {
     images?: boolean
     createdAt?: boolean
     category?: boolean
+    isFeatured?: boolean
   }, ExtArgs["result"]["product"]>
 
   export type ProductSelectScalar = {
@@ -2250,9 +2260,10 @@ export namespace Prisma {
     images?: boolean
     createdAt?: boolean
     category?: boolean
+    isFeatured?: boolean
   }
 
-  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "status" | "price" | "images" | "createdAt" | "category", ExtArgs["result"]["product"]>
+  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "status" | "price" | "images" | "createdAt" | "category" | "isFeatured", ExtArgs["result"]["product"]>
 
   export type $ProductPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Product"
@@ -2266,6 +2277,7 @@ export namespace Prisma {
       images: string[]
       createdAt: Date
       category: $Enums.Category
+      isFeatured: boolean
     }, ExtArgs["result"]["product"]>
     composites: {}
   }
@@ -2697,6 +2709,7 @@ export namespace Prisma {
     readonly images: FieldRef<"Product", 'String[]'>
     readonly createdAt: FieldRef<"Product", 'DateTime'>
     readonly category: FieldRef<"Product", 'Category'>
+    readonly isFeatured: FieldRef<"Product", 'Boolean'>
   }
     
 
@@ -3097,7 +3110,8 @@ export namespace Prisma {
     price: 'price',
     images: 'images',
     createdAt: 'createdAt',
-    category: 'category'
+    category: 'category',
+    isFeatured: 'isFeatured'
   };
 
   export type ProductScalarFieldEnum = (typeof ProductScalarFieldEnum)[keyof typeof ProductScalarFieldEnum]
@@ -3195,6 +3209,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -3280,6 +3301,7 @@ export namespace Prisma {
     images?: StringNullableListFilter<"Product">
     createdAt?: DateTimeFilter<"Product"> | Date | string
     category?: EnumCategoryFilter<"Product"> | $Enums.Category
+    isFeatured?: BoolFilter<"Product"> | boolean
   }
 
   export type ProductOrderByWithRelationInput = {
@@ -3291,6 +3313,7 @@ export namespace Prisma {
     images?: SortOrder
     createdAt?: SortOrder
     category?: SortOrder
+    isFeatured?: SortOrder
   }
 
   export type ProductWhereUniqueInput = Prisma.AtLeast<{
@@ -3305,6 +3328,7 @@ export namespace Prisma {
     images?: StringNullableListFilter<"Product">
     createdAt?: DateTimeFilter<"Product"> | Date | string
     category?: EnumCategoryFilter<"Product"> | $Enums.Category
+    isFeatured?: BoolFilter<"Product"> | boolean
   }, "id">
 
   export type ProductOrderByWithAggregationInput = {
@@ -3316,6 +3340,7 @@ export namespace Prisma {
     images?: SortOrder
     createdAt?: SortOrder
     category?: SortOrder
+    isFeatured?: SortOrder
     _count?: ProductCountOrderByAggregateInput
     _avg?: ProductAvgOrderByAggregateInput
     _max?: ProductMaxOrderByAggregateInput
@@ -3335,6 +3360,7 @@ export namespace Prisma {
     images?: StringNullableListFilter<"Product">
     createdAt?: DateTimeWithAggregatesFilter<"Product"> | Date | string
     category?: EnumCategoryWithAggregatesFilter<"Product"> | $Enums.Category
+    isFeatured?: BoolWithAggregatesFilter<"Product"> | boolean
   }
 
   export type UserCreateInput = {
@@ -3409,6 +3435,7 @@ export namespace Prisma {
     images?: ProductCreateimagesInput | string[]
     createdAt?: Date | string
     category: $Enums.Category
+    isFeatured?: boolean
   }
 
   export type ProductUncheckedCreateInput = {
@@ -3420,6 +3447,7 @@ export namespace Prisma {
     images?: ProductCreateimagesInput | string[]
     createdAt?: Date | string
     category: $Enums.Category
+    isFeatured?: boolean
   }
 
   export type ProductUpdateInput = {
@@ -3431,6 +3459,7 @@ export namespace Prisma {
     images?: ProductUpdateimagesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     category?: EnumCategoryFieldUpdateOperationsInput | $Enums.Category
+    isFeatured?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ProductUncheckedUpdateInput = {
@@ -3442,6 +3471,7 @@ export namespace Prisma {
     images?: ProductUpdateimagesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     category?: EnumCategoryFieldUpdateOperationsInput | $Enums.Category
+    isFeatured?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ProductCreateManyInput = {
@@ -3453,6 +3483,7 @@ export namespace Prisma {
     images?: ProductCreateimagesInput | string[]
     createdAt?: Date | string
     category: $Enums.Category
+    isFeatured?: boolean
   }
 
   export type ProductUpdateManyMutationInput = {
@@ -3464,6 +3495,7 @@ export namespace Prisma {
     images?: ProductUpdateimagesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     category?: EnumCategoryFieldUpdateOperationsInput | $Enums.Category
+    isFeatured?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ProductUncheckedUpdateManyInput = {
@@ -3475,6 +3507,7 @@ export namespace Prisma {
     images?: ProductUpdateimagesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     category?: EnumCategoryFieldUpdateOperationsInput | $Enums.Category
+    isFeatured?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -3595,6 +3628,11 @@ export namespace Prisma {
     not?: NestedEnumCategoryFilter<$PrismaModel> | $Enums.Category
   }
 
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type ProductCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
@@ -3604,6 +3642,7 @@ export namespace Prisma {
     images?: SortOrder
     createdAt?: SortOrder
     category?: SortOrder
+    isFeatured?: SortOrder
   }
 
   export type ProductAvgOrderByAggregateInput = {
@@ -3618,6 +3657,7 @@ export namespace Prisma {
     price?: SortOrder
     createdAt?: SortOrder
     category?: SortOrder
+    isFeatured?: SortOrder
   }
 
   export type ProductMinOrderByAggregateInput = {
@@ -3628,6 +3668,7 @@ export namespace Prisma {
     price?: SortOrder
     createdAt?: SortOrder
     category?: SortOrder
+    isFeatured?: SortOrder
   }
 
   export type ProductSumOrderByAggregateInput = {
@@ -3670,6 +3711,14 @@ export namespace Prisma {
     _max?: NestedEnumCategoryFilter<$PrismaModel>
   }
 
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -3701,6 +3750,10 @@ export namespace Prisma {
 
   export type EnumCategoryFieldUpdateOperationsInput = {
     set?: $Enums.Category
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -3784,6 +3837,11 @@ export namespace Prisma {
     not?: NestedEnumCategoryFilter<$PrismaModel> | $Enums.Category
   }
 
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type NestedEnumProductStatusWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.ProductStatus | EnumProductStatusFieldRefInput<$PrismaModel>
     in?: $Enums.ProductStatus[] | ListEnumProductStatusFieldRefInput<$PrismaModel>
@@ -3829,6 +3887,14 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumCategoryFilter<$PrismaModel>
     _max?: NestedEnumCategoryFilter<$PrismaModel>
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
 

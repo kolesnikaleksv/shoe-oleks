@@ -33,6 +33,7 @@ model Product {
   images      String[]
   createdAt   DateTime      @default(now())
   category    Category
+  isFeatured  Boolean       @default(false)
 }
 
 enum ProductStatus {
