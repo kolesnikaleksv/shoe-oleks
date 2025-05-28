@@ -3,7 +3,7 @@ import { useFormStatus } from 'react-dom';
 import { Button } from './ui/button';
 import { Loader2 } from 'lucide-react';
 
-export function SubmitButton() {
+export function SubmitButton({ text }: { text: string }) {
   const status = useFormStatus();
 
   return (
@@ -14,7 +14,7 @@ export function SubmitButton() {
           Please Wait
         </Button>
       ) : (
-        <Button type="submit">Create Product</Button>
+        <Button type="submit">{text}</Button>
       )}
     </>
   );
