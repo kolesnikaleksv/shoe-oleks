@@ -141,6 +141,13 @@ exports.Prisma.ProductScalarFieldEnum = {
   isFeatured: 'isFeatured'
 };
 
+exports.Prisma.BannerScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  imageString: 'imageString',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -164,7 +171,8 @@ exports.Category = exports.$Enums.Category = {
 
 exports.Prisma.ModelName = {
   User: 'User',
-  Product: 'Product'
+  Product: 'Product',
+  Banner: 'Banner'
 };
 
 /**

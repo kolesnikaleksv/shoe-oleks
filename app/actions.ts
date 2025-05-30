@@ -2,7 +2,7 @@
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 import { redirect } from 'next/navigation';
 import { parseWithZod } from '@conform-to/zod';
-import { productSchema } from '@/app/lib/zodSchemas';
+import { bannerShema, productSchema } from '@/app/lib/zodSchemas';
 import prisma from '@/lib/prisma';
 
 export async function createProduct(prevState: unknown, formData: FormData) {
@@ -91,4 +91,28 @@ export async function deleteProduct(formData: FormData) {
   });
 
   redirect('/dashboard/products');
+}
+
+export async function createBanner(prevState: unknown, formData: FormData) {
+  console.log('hello', formData);
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+
+  if (!user || user.email !== 'kolesnikaleksv@gmail.com') {
+    return redirect('/');
+  }
+  const submission = parseWithZod(formData, { schema: bannerShema });
+
+  if (submission.status !== 'success') {
+    return submission.reply();
+  }
+
+  await prisma.banner.create({
+    data: {
+      title: submission.value.title,
+      imageString: submission.value.imageString,
+    },
+  });
+
+  redirect('/dashboard/banner');
 }
