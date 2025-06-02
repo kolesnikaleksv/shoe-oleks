@@ -72,7 +72,7 @@ export default async function BannerRoute() {
                       height={64}
                       width={64}
                       alt="Banner Image"
-                      className="h=16 w-16 object-cover rounded-xl"
+                      className="h-16 w-16 object-cover rounded-xl"
                     />
                   </TableCell>
                   <TableCell className="font-mediums">{item.title}</TableCell>

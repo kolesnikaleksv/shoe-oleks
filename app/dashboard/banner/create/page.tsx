@@ -67,9 +67,8 @@ export default function CreateRoute() {
               <Input
                 type="hidden"
                 name={fields.imageString.name}
-                key={fields.imageString.name}
-                value={image}
-                defaultValue={fields.imageString.initialValue}
+                key={fields.imageString.key}
+                value={image ?? ''}
               />
               {image !== undefined ? (
                 <Image

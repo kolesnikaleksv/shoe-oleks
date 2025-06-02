@@ -47,7 +47,6 @@ export default function ProdutCreateRoute() {
   });
 
   const handleDelete = (imageUrl: string) => {
-    console.log('hello', imageUrl);
     setImages(images.filter((item) => item !== imageUrl));
   };
   return (
