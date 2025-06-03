@@ -19,7 +19,6 @@ async function getData() {
 
 export async function Hero() {
   const data = await getData();
-  console.log(data);
   return (
     <Carousel>
       <CarouselContent>

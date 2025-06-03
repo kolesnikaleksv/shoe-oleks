@@ -18,7 +18,6 @@ interface IAppProps {
 }
 
 export default function UserDropdown({ name, email, userImage }: IAppProps) {
-  console.log(userImage);
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
