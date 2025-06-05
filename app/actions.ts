@@ -203,3 +203,24 @@ export async function addItem(productId: string) {
 
   revalidatePath('/', 'layout');
 }
+
+export async function delItem(formData: FormData) {
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+
+  if (!user) {
+    redirect('/');
+  }
+
+  const productId = formData.get('productId');
+  const cart: Cart | null = await redis.get(`cart-${user.id}`);
+
+  if (cart && cart.items) {
+    const updateCart: Cart = {
+      userId: user.id,
+      items: cart.items.filter((items) => items.id !== productId),
+    };
+    await redis.set(`cart-${user.id}`, updateCart);
+  }
+  revalidatePath('/bag');
+}
