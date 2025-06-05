@@ -9,10 +9,16 @@ import Link from 'next/link';
 import { ShoppingBagIcon } from 'lucide-react';
 import UserDropdown from '@/components/storefront/UserDropdown';
 import { Button } from '@/components/ui/button';
+import { redis } from '@/lib/redis';
+import { Cart } from '@/lib/interfaces';
 
 export default async function Navbar() {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
+
+  const cart: Cart | null = await redis.get(`cart-${user?.id}`);
+  const count = cart?.items.reduce((acc, item) => item.quantity + acc, 0) || 0;
+
   return (
     <nav className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex items-center justify-between">
       <div className="flex items-center">
@@ -26,7 +32,7 @@ export default async function Navbar() {
           <>
             <Link href="/bag" className="group p-2 flex items-center mr-2">
               <ShoppingBagIcon className="h-6 w-6 text-gray-400 group-hover:text-gray-500" />
-              <span className="group-hover:text-gray-800 ml-2">5</span>
+              <span className="group-hover:text-gray-800 ml-2">{count}</span>
             </Link>
             <UserDropdown
               name={user.given_name as string}
