@@ -9,6 +9,7 @@ import {
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { Skeleton } from '@/components/ui/skeleton';
 
 interface IAppProps {
   item: {
@@ -55,6 +56,19 @@ export default function ProductCard({ item }: IAppProps) {
       <Button className="mt-5 w-full cursor-pointer" asChild>
         <Link href={`/product/${item.id}`}>Learn More!</Link>
       </Button>
+    </div>
+  );
+}
+
+export function LoadingProductCard() {
+  return (
+    <div className="flex flex-col">
+      <Skeleton className="w-full h-[330px]" />
+      <div className="flex flex-col gap-y-2 mt-2">
+        <Skeleton className="h-4 w-full" />
+        <Skeleton className="h-6 w-full" />
+      </div>
+      <Skeleton className="h-10 w-full mt-5" />
     </div>
   );
 }
