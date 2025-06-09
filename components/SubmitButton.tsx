@@ -70,7 +70,10 @@ export function DeleteItemButton() {
           Removing...
         </button>
       ) : (
-        <button type="submit" className="font-medium text-primary ">
+        <button
+          type="submit"
+          className="font-medium text-primary cursor-pointer"
+        >
           Delete
         </button>
       )}
