@@ -1,4 +1,4 @@
-import { delItem } from '@/app/actions';
+import { checkout, delItem } from '@/app/actions';
 import { DeleteItemButton } from '@/components/SubmitButton';
 import { Button } from '@/components/ui/button';
 import { Cart } from '@/lib/interfaces';
@@ -75,9 +75,11 @@ export default async function page() {
               <p>{new Intl.NumberFormat('en-US').format(subtotal)}</p>
             </div>
 
-            <Button size="lg" className="mt-5 w-full">
-              Checkout
-            </Button>
+            <form action={checkout}>
+              <Button size="lg" className="mt-5 w-full">
+                Checkout
+              </Button>
+            </form>
           </div>
         </div>
       )}
