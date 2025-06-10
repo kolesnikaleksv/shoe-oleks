@@ -1,5 +1,5 @@
 import { checkout, delItem } from '@/app/actions';
-import { DeleteItemButton } from '@/components/SubmitButton';
+import { CheckoutButton, DeleteItemButton } from '@/components/SubmitButton';
 import { Button } from '@/components/ui/button';
 import { Cart } from '@/lib/interfaces';
 import { redis } from '@/lib/redis';
@@ -76,9 +76,7 @@ export default async function page() {
             </div>
 
             <form action={checkout}>
-              <Button size="lg" className="mt-5 w-full">
-                Checkout
-              </Button>
+              <CheckoutButton />
             </form>
           </div>
         </div>
