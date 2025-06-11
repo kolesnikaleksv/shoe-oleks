@@ -148,6 +148,13 @@ exports.Prisma.BannerScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.OrderScalarFieldEnum = {
+  id: 'id',
+  status: 'status',
+  amount: 'amount',
+  userId: 'userId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -156,6 +163,11 @@ exports.Prisma.SortOrder = {
 exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
 };
 exports.ProductStatus = exports.$Enums.ProductStatus = {
   draft: 'draft',
@@ -172,7 +184,8 @@ exports.Category = exports.$Enums.Category = {
 exports.Prisma.ModelName = {
   User: 'User',
   Product: 'Product',
-  Banner: 'Banner'
+  Banner: 'Banner',
+  Order: 'Order'
 };
 
 /**
