@@ -12,9 +12,34 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import prisma from '@/lib/prisma';
 import React from 'react';
 
-export default function OrderPage() {
+async function getData() {
+  const data = await prisma.order.findMany({
+    select: {
+      amount: true,
+      createdAt: true,
+      status: true,
+      id: true,
+      User: {
+        select: {
+          firstName: true,
+          profileImage: true,
+          email: true,
+        },
+      },
+    },
+    orderBy: {
+      createdAt: 'desc',
+    },
+  });
+  return data;
+}
+
+export default async function OrderPage() {
+  const data = await getData();
+
   return (
     <div>
       <Card>
@@ -33,18 +58,24 @@ export default function OrderPage() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            <TableRow>
-              <TableCell>
-                <p className="font-medium">Oleks Kolisnyk</p>
-                <p className="hidden md:flex text-sm text-muted-foreground">
-                  test@test.com
-                </p>
-              </TableCell>
-              <TableCell>Sale</TableCell>
-              <TableCell>Successfull</TableCell>
-              <TableCell>2025-05-20</TableCell>
-              <TableCell className="text-right">$250.00</TableCell>
-            </TableRow>
+            {data.map((item) => (
+              <TableRow key={item.id}>
+                <TableCell>
+                  <p className="font-medium">{item.User?.firstName}</p>
+                  <p className="hidden md:flex text-sm text-muted-foreground">
+                    {item.User?.email}
+                  </p>
+                </TableCell>
+                <TableCell>Order</TableCell>
+                <TableCell>{item.status}</TableCell>
+                <TableCell>
+                  {new Intl.DateTimeFormat('en-US').format(item.createdAt)}
+                </TableCell>
+                <TableCell className="text-right">
+                  ${item.amount / 100}
+                </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </Card>

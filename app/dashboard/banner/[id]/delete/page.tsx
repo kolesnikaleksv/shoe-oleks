@@ -16,7 +16,7 @@ export default async function DeleteBanner({
   params: { id: string };
 }) {
   const { id } = await params;
-  console.log(id);
+
   return (
     <div className="h-[80vh] w-full flex items-center justify-center">
       <Card className="max-w-xl w-full">
