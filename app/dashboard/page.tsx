@@ -10,7 +10,7 @@ import RecentSales from '@/components/dashboard/RecentSales';
 import Chart from '@/components/dashboard/Chart';
 import prisma from '@/lib/prisma';
 
-export async function getData() {
+async function getData() {
   const now = new Date();
   const sevenDaysAgo = new Date();
   sevenDaysAgo.setDate(now.getDate() - 7);

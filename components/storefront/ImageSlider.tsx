@@ -25,13 +25,16 @@ export default function ImageSlider({ images }: IAppProps) {
   return (
     <div className="grid gap-6 md:gap-3 items-start">
       <div className="relative overflow-hidden rounded-lg">
-        <Image
-          src={images[mainImageIndex]}
-          alt={'Product Image'}
-          height={600}
-          width={600}
-          className="object-cover w-[600px] h-[600px]"
-        />
+        <div className="relative w-[600px] h-[600px]">
+          <Image
+            src={images[mainImageIndex]}
+            alt={'Product Image'}
+            fill
+            priority
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+        </div>
         <div className="absolute inset-0 flex items-center justify-between px-4">
           <Button variant="ghost" size="icon" onClick={handlePreviousClick}>
             <ChevronLeft className="w-6 h-6" />
@@ -56,9 +59,9 @@ export default function ImageSlider({ images }: IAppProps) {
             <Image
               src={image}
               alt={'Product image'}
-              width={100}
+              width={80}
               height={100}
-              className="object-cover w-25 h-25 "
+              className="object-cover w-[80px] h-[100px] "
             />
           </div>
         ))}

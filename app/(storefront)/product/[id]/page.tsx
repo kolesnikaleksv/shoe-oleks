@@ -26,7 +26,11 @@ async function getData(productId: string) {
   return data;
 }
 
-export default async function Product({ params }: { params: { id: string } }) {
+export default async function Product({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   const { id } = await params;
   const product = await getData(id);
 
