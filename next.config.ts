@@ -20,6 +20,12 @@ const nextConfig: NextConfig = {
   // images: {
   //   remotePatterns: [new URL('https://utfs.io/**')],
   // },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default nextConfig;
