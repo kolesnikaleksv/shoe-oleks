@@ -16,10 +16,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-
-  // images: {
-  //   remotePatterns: [new URL('https://utfs.io/**')],
-  // },
   typescript: {
     ignoreBuildErrors: true,
   },
