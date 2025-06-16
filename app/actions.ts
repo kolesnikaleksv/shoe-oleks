@@ -256,11 +256,11 @@ export async function checkout() {
       success_url:
         process.env.NODE_ENV === 'development'
           ? 'http://localhost:3000/payment/success'
-          : 'https://shoe-oleks.vercel.app/success',
+          : 'https://shoe-oleks.vercel.app/payment/success',
       cancel_url:
         process.env.NODE_ENV === 'development'
           ? 'http://localhost:3000/payment/cancel'
-          : 'https://shoe-oleks.vercel.app/cancel',
+          : 'https://shoe-oleks.vercel.app/payment/cancel',
       metadata: {
         userId: user.id,
       },
